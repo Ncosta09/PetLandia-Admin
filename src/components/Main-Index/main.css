@@ -1,0 +1,140 @@
+.main-mini-chart, .main-big-chart{
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.mini-chart{
+    width: 45%;
+    height: 120px;
+    background-color: burlywood;
+    border-radius: 20px;
+}
+
+.mini-chart-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini-chart-info p{
+    margin: 20px;
+    color: red;
+}
+
+.big-chart{
+    width: 45%;
+    height: 400px;
+    background-color: burlywood;
+    border-radius: 20px;
+}
+
+.main-big-info{
+    height: 65%;
+}
+
+.main-big-info h3{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.ubi-info{
+    width: 65%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    padding: 10px;
+}
+
+.ubi-info-producto{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 10px;
+}
+
+.first-data{
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.first-data p{
+    margin-bottom: 0;
+}
+
+.first-data-producto{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-around;
+}
+
+.second-data{
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.second-data p{
+    align-self: flex-end;
+    margin-bottom: 0;
+}
+
+.second-data-producto{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.first-data-producto p, .second-data-producto p{
+    margin-bottom: 0;
+}
+
+.img-data{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-data img{
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.main-categorys-chart{
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.categorys-chart{
+    width: 80%;
+    height: 300px;
+    margin-bottom: 20px;
+    background-color: burlywood;
+    border-radius: 20px;
+}
