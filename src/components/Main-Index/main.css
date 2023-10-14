@@ -137,4 +137,25 @@
     margin-bottom: 20px;
     background-color: burlywood;
     border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pet-box{
+    width: 300px;
+    height: 50px;
+    margin: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.pet-box p{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

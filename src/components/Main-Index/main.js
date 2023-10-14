@@ -8,7 +8,8 @@ class Main extends Component{
             usuarioTotal: "",
             usuario: "",
             productoTotal: "",
-            producto: ""
+            producto: "",
+            animales: ""
         }
     }
 
@@ -19,12 +20,19 @@ class Main extends Component{
     }
 
     componentDidMount(){
+        //USUARIOS
         this.apiCall('https://petlandia.onrender.com/api/usuarios', this.mostrarTotalUsuario)
         this.apiCall('https://petlandia.onrender.com/api/usuarios', this.mostrarUsuarios)
+        
+        //PRODUCTOS
         this.apiCall('https://petlandia.onrender.com/api/productos', this.mostrarTotalProductos)
         this.apiCall('https://petlandia.onrender.com/api/productos', this.mostrarProductos)
+        
+        //ANIMALES, MARCAS Y CATEGORIAS
+        this.apiCall('https://petlandia.onrender.com/api/filtros', this.mostrarAnimales)
     }
 
+    //USUARIOS
     mostrarTotalUsuario = (data) => {
         this.setState({
             usuarioTotal: data.total
@@ -37,6 +45,7 @@ class Main extends Component{
         })
     }
 
+    //PRODUCTOS
     mostrarUsuarios = (data) => {
         this.setState({
             usuario: data.data
@@ -46,6 +55,13 @@ class Main extends Component{
     mostrarProductos = (data) => {
         this.setState({
             producto: data.data
+        })
+    }
+
+    //ANIMALES
+    mostrarAnimales = (data) => {
+        this.setState({
+            animales: data.animal
         })
     }
 
@@ -77,6 +93,16 @@ class Main extends Component{
             productoConIDMasAlto = this.state.producto.reduce((productoMasAlto, productoActual) => {
                 return productoActual.id > (productoMasAlto ? productoMasAlto.id : 0) ? productoActual : productoMasAlto;
             }, null);
+        }
+
+        let listaAnimales;
+
+        if (this.state.animales) {
+            listaAnimales = this.state.animales.map((animal, index) => (
+            <div key={index} className='pet-box'>
+                <p> { animal.Nombre } </p>
+            </div>
+            ));
         }
     
         return (
@@ -143,7 +169,7 @@ class Main extends Component{
     
             <div className='main-categorys-chart'>
                 <div className='categorys-chart'>
-                    
+                    { listaAnimales }
                 </div>
                 <div className='categorys-chart'></div>
                 <div className='categorys-chart'></div>
