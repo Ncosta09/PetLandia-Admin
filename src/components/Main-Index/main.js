@@ -9,7 +9,9 @@ class Main extends Component{
             usuario: "",
             productoTotal: "",
             producto: "",
-            animales: ""
+            animales: "",
+            marcas: "",
+            categorias: ""
         }
     }
 
@@ -30,6 +32,8 @@ class Main extends Component{
         
         //ANIMALES, MARCAS Y CATEGORIAS
         this.apiCall('https://petlandia.onrender.com/api/filtros', this.mostrarAnimales)
+        this.apiCall('https://petlandia.onrender.com/api/filtros', this.mostrarMarcas)
+        this.apiCall('https://petlandia.onrender.com/api/filtros', this.mostrarCategorias)
     }
 
     //USUARIOS
@@ -65,11 +69,29 @@ class Main extends Component{
         })
     }
 
+    //MARCAS
+    mostrarMarcas = (data) => {
+        this.setState({
+            marcas: data.marca
+        })
+    }
+
+    //CATEGORIAS
+    mostrarCategorias = (data) => {
+        this.setState({
+            categorias: data.categoria
+        })
+    }
+
     render() {
         let infoUser;
         let infoProd;
         let usuarioConIDMasAlto = null;
         let productoConIDMasAlto = null;
+
+        let listaAnimales;
+        let listaMarcas;
+        let listaCategorias;
     
         if (this.state.usuarioTotal === "") {
         infoUser = <p>Cargando...</p>;
@@ -95,12 +117,26 @@ class Main extends Component{
             }, null);
         }
 
-        let listaAnimales;
-
         if (this.state.animales) {
             listaAnimales = this.state.animales.map((animal, index) => (
             <div key={index} className='pet-box'>
                 <p> { animal.Nombre } </p>
+            </div>
+            ));
+        }
+
+        if (this.state.marcas) {
+            listaMarcas = this.state.marcas.map((marcas, index) => (
+            <div key={index} className='pet-box'>
+                <p> { marcas.Nombre } </p>
+            </div>
+            ));
+        }
+
+        if (this.state.categorias) {
+            listaCategorias = this.state.categorias.map((categorias, index) => (
+            <div key={index} className='pet-box'>
+                <p> { categorias.Nombre } </p>
             </div>
             ));
         }
@@ -171,8 +207,12 @@ class Main extends Component{
                 <div className='categorys-chart'>
                     { listaAnimales }
                 </div>
-                <div className='categorys-chart'></div>
-                <div className='categorys-chart'></div>
+                <div className='categorys-chart'>
+                    { listaMarcas }
+                </div>
+                <div className='categorys-chart'>
+                    { listaCategorias }
+                </div>
             </div>
         </div>
         );
