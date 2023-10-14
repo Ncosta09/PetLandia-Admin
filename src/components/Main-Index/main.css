@@ -15,14 +15,18 @@
 }
 
 .mini-chart-info{
+    height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+.mini-chart-info h3{
+    margin-bottom: 0;
+}
+
 .mini-chart-info p{
-    margin: 20px;
     color: red;
 }
 

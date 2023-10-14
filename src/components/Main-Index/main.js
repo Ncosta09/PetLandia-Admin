@@ -86,12 +86,11 @@ class Main extends Component{
     render() {
         let infoUser;
         let infoProd;
-        let usuarioConIDMasAlto = null;
-        let productoConIDMasAlto = null;
-
         let listaAnimales;
         let listaMarcas;
         let listaCategorias;
+        let usuarioConIDMasAlto = null;
+        let productoConIDMasAlto = null;
     
         if (this.state.usuarioTotal === "") {
         infoUser = <p>Cargando...</p>;
