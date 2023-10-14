@@ -1,0 +1,33 @@
+.main-menu{
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-menu{
+    width: 85%;
+    height: 100px;
+    background-color: burlywood;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.usuario-id, .usuario-total{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.usuario-id input{
+    width: 100%;
+}
+
+.usuario-total p{
+    margin: 0;
+}
