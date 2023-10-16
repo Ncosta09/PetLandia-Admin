@@ -3,6 +3,7 @@ import { Link, Routes, Route } from 'react-router-dom';
 
 import Usuario from '../Usuario/usuario';
 import UsuarioPerfil from '../Usuario/Perfl_Usuario/usuarioPerfil'
+import ProductoPerfil from '../Producto/Perfil_Producto/productoPerfil'
 import Producto from '../Producto/producto';
 import Main from '../Main-Index/main';
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='/usuarios' element={ <Usuario /> } />
           <Route path='/usuario/:userId' element={ <UsuarioPerfil /> } />
           <Route path='/productos' element={ <Producto /> } />
+          <Route path='/producto/:prodId' element={ <ProductoPerfil /> } />
           <Route path='/' element = { <Main /> } />
         </Routes>
       </div>
