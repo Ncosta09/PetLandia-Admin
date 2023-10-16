@@ -54,10 +54,9 @@ class Producto extends Component{
             totalProd = <p>{this.state.productoTotal}</p>;
         }
 
-        let productosFiltrados = productos.filter(usuario =>
-            usuario.ID.toString().includes(busqueda) ||
-            usuario.Nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-            usuario.Apellido.toLowerCase().includes(busqueda.toLowerCase())
+        let productosFiltrados = productos.filter(producto =>
+            producto.ID.toString().includes(busqueda) ||
+            producto.Nombre.toLowerCase().includes(busqueda.toLowerCase())
         );
 
         productosFiltrados = productosFiltrados.map(producto => (
