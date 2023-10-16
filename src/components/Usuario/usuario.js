@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../Usuario/usuario.css'
 
 class Usuario extends Component{
@@ -6,7 +7,8 @@ class Usuario extends Component{
         super(props);
         this.state = {
             usuarioTotal: "",
-            usuario: "",
+            usuarios: [],
+            busqueda: ""
         }
     }
 
@@ -31,19 +33,43 @@ class Usuario extends Component{
 
     mostrarUsuarios = (data) => {
         this.setState({
-            usuario: data.data
+            usuarios: data.data
         })
+    }
+
+    barraBusqueda = (e) => {
+        this.setState({
+            busqueda: e.target.value
+        });
     }
 
     render() {
 
-        let totalUser
+        let totalUser;
+        let { busqueda, usuarios } = this.state;
 
         if (this.state.usuarioTotal === "") {
             totalUser = <p>Cargando...</p>;
             } else {
             totalUser = <p>{this.state.usuarioTotal}</p>;
         }
+
+        let usuariosFiltrados = usuarios.filter(usuario =>
+            usuario.ID.toString().includes(busqueda) ||
+            usuario.Nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+            usuario.Apellido.toLowerCase().includes(busqueda.toLowerCase())
+        );
+
+        usuariosFiltrados = usuariosFiltrados.map(usuario => (
+            <tr className='listado-info'  key={usuario.ID}>
+                <td>{usuario.ID}</td>
+                <td>{usuario.Nombre}</td>
+                <td>{usuario.Apellido}</td>
+                <td>{usuario.Email}</td>
+                <td>{usuario.Telefono}</td>
+                <td><Link to={`/usuario/${usuario.ID}`}>Ver</Link></td>
+            </tr>
+        ));
     
         return (
             <div>
@@ -51,14 +77,31 @@ class Usuario extends Component{
                     <div className='nav-menu'>
                         <h2>Usuarios</h2>
                         <div className='usuario-id'>
-                            <label>Buscar por ID:</label>
-                            <input type='text'></input>
+                            <label>Buscar Usuario:</label>
+                            <input type='text' value={busqueda} onChange={this.barraBusqueda}></input>
                         </div>
                         <div className='usuario-total'>
                             <p>Total Usuarios:</p>
                             { totalUser }
                         </div>
                     </div>
+                </div>
+                <div className='main-menu'>
+                    <table className='tabla'>
+                        <thead>
+                            <tr className='listado-info'>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Email</th>
+                                <th>Telefono</th>
+                                <th>Vista</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {usuariosFiltrados}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
