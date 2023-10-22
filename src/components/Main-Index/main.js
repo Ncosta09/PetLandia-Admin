@@ -11,7 +11,8 @@ class Main extends Component{
             producto: "",
             animales: "",
             marcas: "",
-            categorias: ""
+            categorias: "",
+            ventaTotal: ""
         }
     }
 
@@ -29,6 +30,9 @@ class Main extends Component{
         //PRODUCTOS
         this.apiCall('https://petlandia.onrender.com/api/productos', this.mostrarTotalProductos)
         this.apiCall('https://petlandia.onrender.com/api/productos', this.mostrarProductos)
+
+        //VENTAS
+        this.apiCall('https://petlandia.onrender.com/api/ventas', this.mostrarTotalVentas)
         
         //ANIMALES, MARCAS Y CATEGORIAS
         this.apiCall('https://petlandia.onrender.com/api/filtros', this.mostrarAnimales)
@@ -43,22 +47,29 @@ class Main extends Component{
         })
     }
 
-    mostrarTotalProductos = (data) => {
-        this.setState({
-            productoTotal: data.total
-        })
-    }
-
-    //PRODUCTOS
     mostrarUsuarios = (data) => {
         this.setState({
             usuario: data.data
         })
     }
 
+    //PRODUCTOS
+    mostrarTotalProductos = (data) => {
+        this.setState({
+            productoTotal: data.total
+        })
+    }
+
     mostrarProductos = (data) => {
         this.setState({
             producto: data.data
+        })
+    }
+
+    //VENTAS
+    mostrarTotalVentas = (data) => {
+        this.setState({
+            ventaTotal: data.total
         })
     }
 
@@ -86,6 +97,7 @@ class Main extends Component{
     render() {
         let infoUser;
         let infoProd;
+        let infoVen;
         let listaAnimales;
         let listaMarcas;
         let listaCategorias;
@@ -102,6 +114,12 @@ class Main extends Component{
         infoProd = <p>Cargando...</p>;
         } else {
         infoProd = <p>{this.state.productoTotal}</p>;
+        }
+
+        if (this.state.ventaTotal === "") {
+            infoVen = <p>Cargando...</p>;
+        } else {
+            infoVen = <p>{this.state.ventaTotal}</p>;
         }
     
         if (this.state.usuario) {
@@ -149,11 +167,18 @@ class Main extends Component{
                     {infoUser}
                 </div>
             </div>
-    
+
             <div className='mini-chart'>
                 <div className='mini-chart-info'>
                     <h3>Total Productos:</h3>
                     {infoProd}
+                </div>
+            </div>
+    
+            <div className='mini-chart'>
+                <div className='mini-chart-info'>
+                    <h3>Total Ventas:</h3>
+                    {infoVen}
                 </div>
             </div>
             </div>
