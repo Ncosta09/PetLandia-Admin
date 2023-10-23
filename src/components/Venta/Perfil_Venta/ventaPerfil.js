@@ -19,7 +19,8 @@ function PerfilVenta() {
             const datosVenta = venta.data;
 
             return (
-                <table className="tabla">
+                <div className='main-table'>
+                    <table className="tabla">
                     <thead>
                         <tr className='listado-info'>
                             <th>ID de Venta</th>
@@ -39,6 +40,7 @@ function PerfilVenta() {
                         </tr>
                     </tbody>
                 </table>
+                </div>
             );
         }
     };
@@ -46,7 +48,8 @@ function PerfilVenta() {
     const detalleVenta = () => {
         if (venta && venta.data && venta.data.DetalleVentas && venta.data.DetalleVentas.length > 0) {
             return (
-                <table className="tabla">
+                <div className='main-table'>
+                    <table className="tabla">
                     <thead>
                         <tr className='listado-info'>
                             <th>ID</th>
@@ -71,14 +74,22 @@ function PerfilVenta() {
                         ))}
                     </tbody>
                 </table>
+                </div>
             );
         }
     };
 
     return (
         <div>
+            <div className='top-bar'>
+                <h2>Detalle de la venta</h2>
+            </div>
             {datosVenta()}
             {detalleVenta()}
+
+            <div className='backBtn'>
+                <Link to='/ventas' className='back'>Vovler</Link>
+            </div>
         </div>
     );
 }

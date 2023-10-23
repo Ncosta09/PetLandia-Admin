@@ -103,6 +103,9 @@ class Usuario extends Component{
                         </tbody>
                     </table>
                 </div>
+                <div className='backBtn'>
+                    <Link to='/' className='back'>Vovler</Link>
+                </div>
             </div>
         );
     }
